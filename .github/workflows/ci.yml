@@ -38,6 +38,8 @@ jobs:
       #     restore-keys: ${{ runner.os }}-composer-
       # - name: Install dependencies
       #   run: composer install --prefer-dist
+      -name: login
+      run: wasmer login ${{ secrets.WASMER_CIUSER_PROD_TOKEN }}
       - name: Deploy app to Wasmer Edge
         run: wasmer deploy --token=${{ secrets.WASMER_CIUSER_PROD_TOKEN }} --non-interactive --no-wait --no-persist-id
 
